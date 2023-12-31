@@ -1,7 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 
+import { bicycleReducer } from "./slices";
+
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    bicycleReducer,
+  },
 });
 
 type RootStore = ReturnType<typeof store.getState>;

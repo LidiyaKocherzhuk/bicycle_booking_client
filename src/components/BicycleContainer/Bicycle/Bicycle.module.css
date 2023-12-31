@@ -1,0 +1,30 @@
+.Container {
+    width: 618px;
+    padding: 10px;
+    border-radius: 10px;
+    border: 2px solid;
+    background: #E8E8E8;
+}
+
+.description{
+}
+
+.label {
+    font-family: Saira system-ui;
+    font-size: 14px;
+    line-height: 22px;
+    text-align: left;
+    color: #333333;
+}
+
+.label span {
+    font-weight: 900;
+}
+
+.id {
+    font-family: Saira system-ui;
+    font-size: 8px;
+    line-height: 13px;
+    text-align: left;
+    color: #717171;
+}
