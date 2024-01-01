@@ -1,11 +1,18 @@
 import React from "react";
 
-import { Bicycles } from "../components";
+import { Bicycles, Form, Statistics } from "../components";
+import css from "./BicyclePage.module.css";
 
 const BicyclePage = () => {
   return (
-    <div>
+    <div className={css.Container}>
       <Bicycles />
+      <hr />
+      <div className={css.rightSide}>
+        <Form />
+        <hr />
+        <Statistics />
+      </div>
     </div>
   );
 };

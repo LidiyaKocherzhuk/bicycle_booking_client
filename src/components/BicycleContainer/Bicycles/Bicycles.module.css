@@ -1,4 +1,5 @@
 .Container {
+    width: 50%;
     display: flex;
     flex-direction: column;
     row-gap: 15px;
