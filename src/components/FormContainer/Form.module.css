@@ -1,0 +1,31 @@
+.Form {
+    width: 100%;
+    padding: 20px;
+}
+
+.Form form {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: 10px;
+    justify-content: space-between;
+}
+
+.Form input,
+.Form button {
+    width: 49%;
+    height: 29px;
+    padding: 5px 16px 5px 16px;
+    border-radius: 5px;
+    background: #E8E8E8;
+    border: none;
+}
+
+#description {
+    width: 100%;
+    height: 75px;
+    text-align: start;
+}
+
+.Form button {
+    background: #696969;
+}

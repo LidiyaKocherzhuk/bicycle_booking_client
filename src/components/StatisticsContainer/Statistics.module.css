@@ -1,0 +1,16 @@
+.Container {
+    padding: 20px
+}
+
+.Container h2,
+.Container div{
+    font-family: Saira system-ui;
+    font-size: 20px;
+    font-weight: 900;
+    line-height: 28px;
+}
+
+.Container div {
+    font-size: 18px;
+    font-weight: 500;
+}
