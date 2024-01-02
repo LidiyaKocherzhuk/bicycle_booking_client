@@ -4,7 +4,7 @@ const bicycle: string = `${baseURL}/bicycle`;
 
 const urls = {
   base: bicycle,
-  byId: (id: string | number): string => `${bicycle}/${id}`,
+  byId: (id: string): string => `${bicycle}/${id}`,
 };
 
 export { urls, baseURL };

@@ -7,25 +7,20 @@ import { bicycleActions } from "../../redux";
 import css from "./Form.module.css";
 
 const Form = () => {
-  const {
-    register,
-    handleSubmit,
-    reset,
-    // formState: { errors, isValid },
-  } = useForm<IBicycleData>({
+  const { register, handleSubmit, reset } = useForm<IBicycleData>({
     mode: "onTouched",
-    // resolver: joiResolver(carValidator),
   });
 
   const dispatch = useAppDispatch();
 
   const save: SubmitHandler<IBicycleData> = (bicycleData) => {
     dispatch(bicycleActions.create(bicycleData));
+    // reset();
   };
 
   return (
     <div className={css.Form}>
-      <form onSubmit={handleSubmit(save)}>
+      <form>
         <input type="text" {...register("name")} placeholder={"Name"} />
         <input type="text" {...register("type")} placeholder={"Type"} />
         <input type="text" {...register("color")} placeholder={"Color"} />
@@ -46,7 +41,7 @@ const Form = () => {
           {...register("description")}
           placeholder={"Description"}
         />
-        <button>SAVE</button>
+        <button onClick={handleSubmit(save)}>SAVE</button>
         <button onClick={() => reset()}>CLEAR</button>
       </form>
     </div>
