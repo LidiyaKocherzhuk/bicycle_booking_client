@@ -13,7 +13,9 @@ const Bicycles = () => {
     dispatch(bicycleActions.getAll());
   }, []);
 
-  console.log(bicycles);
+  useEffect(() => {
+    dispatch(bicycleActions.countData({ bicycles }));
+  }, [bicycles]);
 
   return (
     <div className={css.Container}>

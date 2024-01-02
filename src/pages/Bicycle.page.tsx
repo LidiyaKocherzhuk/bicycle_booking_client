@@ -7,7 +7,6 @@ const BicyclePage = () => {
   return (
     <div className={css.Container}>
       <Bicycles />
-      <hr />
 
       <div className={css.rightSide}>
         <Form />

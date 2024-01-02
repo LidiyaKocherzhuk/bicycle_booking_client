@@ -5,10 +5,16 @@ import { bicycleService } from "../../services";
 
 interface IState {
   bicycles: IBicycle[];
+  availableCount: number;
+  busyCount: number;
+  averageCost: number;
 }
 
 const initialState: IState = {
   bicycles: [],
+  availableCount: 0,
+  busyCount: 0,
+  averageCost: 0,
 };
 
 const getAll = createAsyncThunk<{ bicycles: IBicycle[] }, void>(
@@ -67,10 +73,31 @@ const bicycleSlice = createSlice({
         (item) => item._id !== action.payload.id,
       );
     },
+    countData: (state, action: { payload: { bicycles: IBicycle[] } }) => {
+      const countData = action.payload.bicycles.reduce(
+        (previousValue, currentValue) => {
+          previousValue.averageCost += currentValue.price;
+          if (currentValue.status == "Available") {
+            previousValue.availableCount++;
+          }
+          if (currentValue.status == "Busy") {
+            previousValue.busyCount++;
+          }
+
+          return previousValue;
+        },
+        { averageCost: 0, availableCount: 0, busyCount: 0 },
+      );
+
+      state.availableCount = countData.availableCount;
+      state.busyCount = countData.busyCount;
+      state.averageCost = countData.averageCost / state.bicycles.length;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAll.fulfilled, (state, action) => {
-      state.bicycles = action.payload.bicycles;
+      const { bicycles } = action.payload;
+      state.bicycles = bicycles;
     });
     builder.addCase(create.fulfilled, (state, action) => {
       state.bicycles.push(action.payload.bicycle);
