@@ -13,6 +13,8 @@ const Bicycles = () => {
     dispatch(bicycleActions.getAll());
   }, []);
 
+  console.log(bicycles);
+
   return (
     <div className={css.Container}>
       {bicycles.map((bicycle) => (

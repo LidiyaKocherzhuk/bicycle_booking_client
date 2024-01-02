@@ -35,10 +35,39 @@ const create = createAsyncThunk<{ bicycle: IBicycle }, IBicycleData>(
   },
 );
 
+const update = createAsyncThunk<
+  { bicycles: IBicycle[] },
+  { id: string; updateData: Partial<IBicycle> }
+>("bicycleSlice/update", async ({ id, updateData }, { rejectWithValue }) => {
+  try {
+    const { data } = await bicycleService.update(id, updateData);
+    return { bicycles: data };
+  } catch (error) {
+    return rejectWithValue(error);
+  }
+});
+
+const deleteBicycle = createAsyncThunk<void, string>(
+  "bicycleSlice/deleteBicycle",
+  async (id, { rejectWithValue }) => {
+    try {
+      await bicycleService.delete(id);
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
+
 const bicycleSlice = createSlice({
   name: "bicycleSlice",
   initialState,
-  reducers: {},
+  reducers: {
+    deleteById: (state, action) => {
+      state.bicycles = state.bicycles.filter(
+        (item) => item._id !== action.payload.id,
+      );
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(getAll.fulfilled, (state, action) => {
       state.bicycles = action.payload.bicycles;
@@ -46,11 +75,14 @@ const bicycleSlice = createSlice({
     builder.addCase(create.fulfilled, (state, action) => {
       state.bicycles.push(action.payload.bicycle);
     });
+    builder.addCase(update.fulfilled, (state, action) => {
+      state.bicycles = action.payload.bicycles;
+    });
   },
 });
 
 const { reducer: bicycleReducer, actions } = bicycleSlice;
 
-const bicycleActions = { ...actions, getAll, create };
+const bicycleActions = { ...actions, getAll, create, update, deleteBicycle };
 
 export { bicycleReducer, bicycleActions };

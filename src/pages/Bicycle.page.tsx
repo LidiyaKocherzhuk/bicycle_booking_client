@@ -8,6 +8,7 @@ const BicyclePage = () => {
     <div className={css.Container}>
       <Bicycles />
       <hr />
+
       <div className={css.rightSide}>
         <Form />
         <hr />
