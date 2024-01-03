@@ -21,7 +21,7 @@ const Statistics = () => {
         Booked Bikes: <b>{busyCount}</b>
       </div>
       <div>
-        Average bike cost: <b>{averageCost}</b>.00 UAH/hr.
+        Average bike cost: <b>{averageCost}.00</b> UAH/hr.
       </div>
     </div>
   );

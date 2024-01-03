@@ -91,7 +91,9 @@ const bicycleSlice = createSlice({
 
       state.availableCount = countData.availableCount;
       state.busyCount = countData.busyCount;
-      state.averageCost = countData.averageCost / state.bicycles.length;
+      state.averageCost = countData.averageCost
+        ? countData.averageCost / state.bicycles.length
+        : 0;
     },
   },
   extraReducers: (builder) => {
