@@ -1,14 +1,15 @@
+import "./BicyclePage.css";
+
 import React from "react";
 
 import { Bicycles, Form, Statistics } from "../components";
-import css from "./BicyclePage.module.css";
 
 const BicyclePage = () => {
   return (
-    <div className={css.Container}>
+    <div className={"BicyclePage"}>
       <Bicycles />
 
-      <div className={css.rightSide}>
+      <div className={"BicyclePage_rightSide"}>
         <Form />
         <hr />
         <Statistics />

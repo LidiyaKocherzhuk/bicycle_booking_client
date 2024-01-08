@@ -1,16 +1,16 @@
-.Container {
+.Statistics {
     padding: 20px
 }
 
-.Container h2,
-.Container div{
+.Statistics h2,
+.Statistics div{
     font-family: Saira system-ui;
     font-size: 20px;
     font-weight: 900;
     line-height: 28px;
 }
 
-.Container div {
+.Statistics div {
     font-size: 18px;
     font-weight: 500;
 }

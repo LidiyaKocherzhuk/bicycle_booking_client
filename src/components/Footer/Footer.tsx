@@ -1,13 +1,13 @@
-import React from "react";
+import "./Footer.css";
 
-import css from "./Footer.module.css";
+import React from "react";
 
 const Footer = () => {
   return (
-    <div className={css.Component}>
-      <div className={css.footer}>
-        <span className={css.title}>Developer: </span>
-        <span className={css.name}>Lidiya Kocherzchuk</span>
+    <div className={"Component"}>
+      <div className={"footer"}>
+        <span className={"title"}>Developer: </span>
+        <span className={"name"}>Lidiya Kocherzchuk</span>
       </div>
     </div>
   );

@@ -1,7 +1,8 @@
+import "./Statistics.css";
+
 import React from "react";
 
 import { useAppSelector } from "../../hooks";
-import css from "./Statistics.module.css";
 
 const Statistics = () => {
   const { bicycles, availableCount, busyCount, averageCost } = useAppSelector(
@@ -9,7 +10,7 @@ const Statistics = () => {
   );
 
   return (
-    <div className={css.Container}>
+    <div className={"Statistics"}>
       <h2>STATISTICS</h2>
       <div>
         Total Bikes : <b>{bicycles.length}</b>
@@ -21,7 +22,7 @@ const Statistics = () => {
         Booked Bikes: <b>{busyCount}</b>
       </div>
       <div>
-        Average bike cost: <b>{averageCost}.00</b> UAH/hr.
+        Average bike cost: <b>{averageCost.toFixed(2)}</b> UAH/hr.
       </div>
     </div>
   );

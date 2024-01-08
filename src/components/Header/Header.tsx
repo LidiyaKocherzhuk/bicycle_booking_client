@@ -1,11 +1,11 @@
-import React from "react";
+import "./Header.css";
 
-import css from "./Header.module.css";
+import React from "react";
 
 const Header = () => {
   return (
-    <div className={css.Component}>
-      <div className={css.header}>ADMIN.BIKE-BOOKING.COM</div>
+    <div className={"Header"}>
+      <div className={"header"}>ADMIN.BIKE-BOOKING.COM</div>
     </div>
   );
 };
