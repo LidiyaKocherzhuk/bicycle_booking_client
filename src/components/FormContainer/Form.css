@@ -29,3 +29,15 @@
 .Form button {
     background: #696969;
 }
+
+.Form_error,
+.Form_tips {
+    width: 100%;
+    color: red;
+    font-style: inherit;
+    font-size: 12px;
+}
+
+.Form_tips {
+    color: black;
+}

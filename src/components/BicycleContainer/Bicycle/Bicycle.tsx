@@ -1,10 +1,11 @@
+import "./Bicycle.css";
+
 import React, { ChangeEventHandler, FC, PropsWithChildren } from "react";
 import { IoMdClose } from "react-icons/io";
 
 import { useAppDispatch } from "../../../hooks";
 import { IBicycle } from "../../../intefaces";
 import { bicycleActions } from "../../../redux";
-import css from "./Bicycle.module.css";
 
 interface IProps extends PropsWithChildren {
   bicycle: IBicycle;
@@ -33,28 +34,28 @@ const Bicycle: FC<IProps> = ({ bicycle }) => {
 
   return (
     <div
-      className={`${css.Container} ${
+      className={`Bicycle ${
         status === "Available"
-          ? css.statusAvailable
+          ? "statusAvailable"
           : status === "Busy"
-            ? css.statusBusy
-            : css.statusUnavailable
+            ? "statusBusy"
+            : "statusUnavailable"
       }`}
     >
-      <div className={css.description}>
-        <div className={css.label}>
+      <div className={"Bicycle_description"}>
+        <div className={"label"}>
           <span>{name.toUpperCase()}</span> - {type.toUpperCase()}(
           {color.toUpperCase()})
         </div>
 
-        <div className={css.id}>ID: {ID}</div>
+        <div className={"id"}>ID: {ID}</div>
 
-        <div className={css.status}>
+        <div className={"status"}>
           <p>STATUS:</p>
           <select
             onChange={changeStatus}
             className="form-select"
-            id={css.formSelect}
+            id={"formSelect"}
           >
             <option>{status}</option>
 
@@ -67,9 +68,9 @@ const Bicycle: FC<IProps> = ({ bicycle }) => {
         </div>
       </div>
 
-      <div className={css.rightSide}>
-        <IoMdClose onClick={deleteBicycle} className={css.deleteBtn} />
-        <div className={css.price}>{price}.00 UAH/hr.</div>
+      <div className={"Bicycle_rightSide"}>
+        <IoMdClose onClick={deleteBicycle} className={"deleteBtn"} />
+        <div className={"price"}>{price}.00 UAH/hr.</div>
       </div>
     </div>
   );

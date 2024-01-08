@@ -8,6 +8,7 @@ interface IState {
   availableCount: number;
   busyCount: number;
   averageCost: number;
+  error: string | null;
 }
 
 const initialState: IState = {
@@ -15,6 +16,7 @@ const initialState: IState = {
   availableCount: 0,
   busyCount: 0,
   averageCost: 0,
+  error: null,
 };
 
 const getAll = createAsyncThunk<{ bicycles: IBicycle[] }, void>(
@@ -35,8 +37,8 @@ const create = createAsyncThunk<{ bicycle: IBicycle }, IBicycleData>(
     try {
       const { data } = await bicycleService.create(bicycleData);
       return { bicycle: data };
-    } catch (error) {
-      return rejectWithValue(error);
+    } catch (error: any) {
+      return rejectWithValue(error.response?.data.message);
     }
   },
 );
@@ -100,12 +102,21 @@ const bicycleSlice = createSlice({
     builder.addCase(getAll.fulfilled, (state, action) => {
       const { bicycles } = action.payload;
       state.bicycles = bicycles;
+      state.error = null;
     });
     builder.addCase(create.fulfilled, (state, action) => {
       state.bicycles.push(action.payload.bicycle);
+      state.error = null;
+    });
+    builder.addCase(create.rejected, (state, action) => {
+      const message = action.payload as string;
+      state.error = message
+        ? message
+        : "Upsss... Something went wrong! Try again!";
     });
     builder.addCase(update.fulfilled, (state, action) => {
       state.bicycles = action.payload.bicycles;
+      state.error = null;
     });
   },
 });
